@@ -26,3 +26,13 @@ class Task(models.Model):
 
     def __str__(self):
         return f"{self.title} {self.status}"
+    
+    class Meta:
+        ordering = ["due_date", "-created_at"]
+
+    def __str__(self):
+        return self.title
+
+    @property
+    def is_overdue(self):
+        return self.due_date < timezone.localdate() and self.status != "completed"
