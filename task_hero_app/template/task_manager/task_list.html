@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="board">
+    <div class="board-column">
+        <div class="column-header">
+            <h5>To Do</h5>
+        </div>
+
+        {% for task in todo_tasks %}
+        <div class="task-card">
+            <div class="task-top">
+                <span class="priority-badge priority-{{ task.priority }}">{{ task.get_priority_display }}</span>
+                {% if task.is_overdue %}
+                    <span class="overdue-badge">Overdue</span>
+                {% endif %}
+            </div>
+
+            <h5><a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a></h5>
+            <p>Due: {{ task.due_date }}</p>
+
+            <div class="task-actions">
+                <a href="{% url 'task_update' task.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a href="{% url 'task_delete' task.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="empty-box">No tasks in To Do.</div>
+        {% endfor %}
+    </div>
+
+    <div class="board-column">
+        <div class="column-header">
+            <h5>In Progress</h5>
+        </div>
+
+        {% for task in progress_tasks %}
+        <div class="task-card">
+            <div class="task-top">
+                <span class="priority-badge priority-{{ task.priority }}">{{ task.get_priority_display }}</span>
+                {% if task.is_overdue %}
+                    <span class="overdue-badge">Overdue</span>
+                {% endif %}
+            </div>
+
+            <h5><a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a></h5>
+            <p>Due: {{ task.due_date }}</p>
+
+            <div class="task-actions">
+                <a href="{% url 'task_update' task.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a href="{% url 'task_delete' task.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="empty-box">No tasks in progress.</div>
+        {% endfor %}
+    </div>
+
+    <div class="board-column">
+        <div class="column-header">
+            <h5>Completed</h5>
+        </div>
+
+        {% for task in completed_tasks %}
+        <div class="task-card">
+            <div class="task-top">
+                <span class="priority-badge priority-{{ task.priority }}">{{ task.get_priority_display }}</span>
+            </div>
+
+            <h5><a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a></h5>
+            <p>Due: {{ task.due_date }}</p>
+
+            <div class="task-actions">
+                <a href="{% url 'task_update' task.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a href="{% url 'task_delete' task.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="empty-box">No completed tasks.</div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
