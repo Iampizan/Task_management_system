@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'partial/base.html' %}
 
 {% block content %}
 <div class="form-card">
@@ -8,7 +8,7 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Save Task</button>
-        <a href="{% url 'task_list' %}" class="btn btn-secondary">Cancel</a>
+        <a href="{% url 'task_manager:task_list' %}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 {% endblock %}

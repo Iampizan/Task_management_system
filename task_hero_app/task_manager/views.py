@@ -13,11 +13,11 @@ User = get_user_model()
 
 @login_required
 def task_list(request):
-    tasks = Task.objects.filter(owner=request.user)
+    tasks = Task.objects.filter(user=request.user)
 
-    todo_tasks = tasks.filter(status="todo")
-    progress_tasks = tasks.filter(status="progress")
-    completed_tasks = tasks.filter(status="completed")
+    todo_tasks = tasks.filter(status="TODO")
+    progress_tasks = tasks.filter(status="IN_PROGRESS")
+    completed_tasks = tasks.filter(status="COMPLETED")
 
     context = {
         "todo_tasks": todo_tasks,
@@ -29,8 +29,8 @@ def task_list(request):
 
 @login_required
 def task_detail(request, pk):
-    task = get_object_or_404(Task, pk=pk, owner=request.user)
-    return render(request, "task_manager/task_detail.html", {"task": task})
+    task = get_object_or_404(Task, pk=pk, user=request.user)
+    return render(request, "task_manager/task_details.html", {"task": task})
 
 
 @login_required
@@ -39,9 +39,9 @@ def task_create(request):
         form = TaskForm(request.POST)
         if form.is_valid():
             task = form.save(commit=False)
-            task.owner = request.user
+            task.user = request.user
             task.save()
-            return redirect("task_list")
+            return redirect("task_manager:task_list")
     else:
         form = TaskForm()
     return render(request, "task_manager/task_form.html", {"form": form, "title": "Create Task"})
@@ -49,13 +49,13 @@ def task_create(request):
 
 @login_required
 def task_update(request, pk):
-    task = get_object_or_404(Task, pk=pk, owner=request.user)
+    task = get_object_or_404(Task, pk=pk, user=request.user)
 
     if request.method == "POST":
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
-            return redirect("task_detail", pk=task.pk)
+            return redirect("task_manager:task_detail", pk=task.pk)
     else:
         form = TaskForm(instance=task)
 
@@ -64,21 +64,21 @@ def task_update(request, pk):
 
 @login_required
 def task_delete(request, pk):
-    task = get_object_or_404(Task, pk=pk, owner=request.user)
+    task = get_object_or_404(Task, pk=pk, user=request.user)
 
     if request.method == "POST":
         task.delete()
-        return redirect("task_list")
+        return redirect("task_manager:task_list")
 
     return render(request, "task_manager/task_confirm_delete.html", {"task": task})
 
 
 @login_required
 def mark_completed(request, pk):
-    task = get_object_or_404(Task, pk=pk, owner=request.user)
+    task = get_object_or_404(Task, pk=pk, user=request.user)
 
-    if request.method == "POST" and task.status != "completed":
-        task.status = "completed"
+    if request.method == "POST" and task.status != "COMPLETED":
+        task.status = "COMPLETED"
         task.save()
 
-    return redirect("task_detail", pk=task.pk)
+    return redirect("task_manager:task_list", pk=task.pk)

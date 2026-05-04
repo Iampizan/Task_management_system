@@ -2,6 +2,8 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
 
+app_name = 'task_manager'
+
 urlpatterns = [
     path("", views.task_list, name="task_list"),
     path("task/new/", views.task_create, name="task_create"),
@@ -10,7 +12,4 @@ urlpatterns = [
     path("task/<int:pk>/delete/", views.task_delete, name="task_delete"),
     path("task/<int:pk>/complete/", views.mark_completed, name="mark_completed"),
 
-    # path("signup/", views.signup_view, name="signup"),
-    # path("login/", auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
-    # path("logout/", auth_views.LogoutView.as_view(), name="logout"),
 ]

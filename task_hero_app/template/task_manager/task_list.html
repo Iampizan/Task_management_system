@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'partial/base.html' %}
 {% load static %}
 
 {% block content %}
@@ -17,12 +17,12 @@
                 {% endif %}
             </div>
 
-            <h5><a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a></h5>
+            <h5><a href="{% url 'task_manager:task_detail' task.pk %}">{{ task.title }}</a></h5>
             <p>Due: {{ task.due_date }}</p>
 
             <div class="task-actions">
-                <a href="{% url 'task_update' task.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
-                <a href="{% url 'task_delete' task.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                <a href="{% url 'task_manager:task_update' task.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a href="{% url 'task_manager:task_delete' task.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
             </div>
         </div>
         {% empty %}
@@ -44,12 +44,12 @@
                 {% endif %}
             </div>
 
-            <h5><a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a></h5>
+            <h5><a href="{% url 'task_manager:task_detail' task.pk %}">{{ task.title }}</a></h5>
             <p>Due: {{ task.due_date }}</p>
 
             <div class="task-actions">
-                <a href="{% url 'task_update' task.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
-                <a href="{% url 'task_delete' task.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                <a href="{% url 'task_manager:task_update' task.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a href="{% url 'task_manager:task_delete' task.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
             </div>
         </div>
         {% empty %}
@@ -72,8 +72,8 @@
             <p>Due: {{ task.due_date }}</p>
 
             <div class="task-actions">
-                <a href="{% url 'task_update' task.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
-                <a href="{% url 'task_delete' task.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                <a href="{% url 'task_manager:task_update' task.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a href="{% url 'task_manager:task_delete' task.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
             </div>
         </div>
         {% empty %}

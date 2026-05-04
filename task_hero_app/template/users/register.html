@@ -13,14 +13,14 @@
             <h2>Create Account</h2>
             <p>Sign up to start organizing your tasks.</p>
 
-            <form method="post">
+            <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit" class="auth-btn">Sign Up</button>
             </form>
 
             <p class="auth-link">
-                Already have an account? <a href="{% url 'login' %}">Login</a>
+                Already have an account? <a href="{% url 'users:login' %}">Login</a>
             </p>
         </div>
     </div>
