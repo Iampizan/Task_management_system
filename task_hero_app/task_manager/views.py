@@ -84,4 +84,4 @@ def mark_completed(request, pk):
         task.status = "COMPLETED"
         task.save()
 
-    return redirect("task_manager:task_list", pk=task.pk)
+    return redirect("task_manager:task_list")
