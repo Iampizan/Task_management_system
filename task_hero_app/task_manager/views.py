@@ -11,6 +11,9 @@ from .forms import TaskForm
 User = get_user_model()
 
 
+def home(request):
+    return render(request, "task_manager/home_page.html")
+
 @login_required
 def task_list(request):
     tasks = Task.objects.filter(user=request.user)

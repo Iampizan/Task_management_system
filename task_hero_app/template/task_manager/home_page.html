@@ -1,0 +1,225 @@
+<!-- templates/home.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskloop - Task Management App</title>
+
+    <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo-section">
+            <div class="logo-box">T</div>
+            <h2>Taskloop</h2>
+        </div>
+
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#workflow">Workflow</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <div class="auth-buttons">
+            <a href="{% url 'users:login' %}" class="login-btn">Login</a>
+            <a href="{% url 'users:signup' %}" class="signup-btn">Sign Up</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <span class="tag-badge">Modern Task Management</span>
+
+            <h1>
+                Organize Your Work.
+                <span>Boost Productivity.</span>
+            </h1>
+
+            <p>
+                Taskloop helps teams and individuals manage projects,
+                track deadlines, organize daily activities, and stay productive
+                with a clean and modern workflow dashboard.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="{% url 'users:signup' %}" class="primary-btn">
+                    Get Started
+                </a>
+
+                <a href="{% url 'users:login' %}" class="secondary-btn">
+                    Login
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <h3>10K+</h3>
+                    <p>Tasks Managed</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>2K+</h3>
+                    <p>Active Users</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>99%</h3>
+                    <p>Productivity Growth</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-image-section">
+            <div class="dashboard-preview">
+
+                <div class="preview-header">
+                    <div class="preview-dot red"></div>
+                    <div class="preview-dot yellow"></div>
+                    <div class="preview-dot green"></div>
+                </div>
+
+                <div class="preview-board">
+
+                    <div class="preview-column">
+                        <h4>To Do</h4>
+
+                        <div class="preview-card">
+                            <span class="priority high">High</span>
+                            <p>Create UI Design</p>
+                        </div>
+
+                        <div class="preview-card">
+                            <span class="priority low">Low</span>
+                            <p>Research Dashboard</p>
+                        </div>
+                    </div>
+
+                    <div class="preview-column">
+                        <h4>In Progress</h4>
+
+                        <div class="preview-card">
+                            <span class="priority medium">Medium</span>
+                            <p>Develop API</p>
+                        </div>
+                    </div>
+
+                    <div class="preview-column">
+                        <h4>Completed</h4>
+
+                        <div class="preview-card">
+                            <span class="priority low">Low</span>
+                            <p>Project Setup</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features-section" id="features">
+
+        <div class="section-title">
+            <span>FEATURES</span>
+            <h2>Everything You Need To Manage Tasks</h2>
+        </div>
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon">📌</div>
+                <h3>Task Organization</h3>
+                <p>
+                    Easily organize tasks into To Do, In Progress,
+                    and Completed sections.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>Deadline Tracking</h3>
+                <p>
+                    Monitor due dates and identify overdue tasks quickly.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔥</div>
+                <h3>Priority Management</h3>
+                <p>
+                    Prioritize tasks with color-coded labels for better focus.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>User Dashboard</h3>
+                <p>
+                    Every user gets a personalized dashboard after login.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section class="workflow-section" id="workflow">
+
+        <div class="section-title">
+            <span>WORKFLOW</span>
+            <h2>Simple & Efficient Workflow</h2>
+        </div>
+
+        <div class="workflow-grid">
+
+            <div class="workflow-card">
+                <div class="workflow-number">1</div>
+                <h3>Create Tasks</h3>
+                <p>
+                    Add new tasks with title, description,
+                    due date, and priority.
+                </p>
+            </div>
+
+            <div class="workflow-card">
+                <div class="workflow-number">2</div>
+                <h3>Track Progress</h3>
+                <p>
+                    Move tasks across workflow stages
+                    and stay organized.
+                </p>
+            </div>
+
+            <div class="workflow-card">
+                <div class="workflow-number">3</div>
+                <h3>Complete Projects</h3>
+                <p>
+                    Finish tasks on time and improve team productivity.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="about">
+        <h2>Taskloop</h2>
+
+        <p>
+            Modern task management platform for individuals and teams.
+        </p>
+
+        <small>
+            © 2026 Taskloop. All rights reserved.
+        </small>
+    </footer>
+
+</body>
+</html>

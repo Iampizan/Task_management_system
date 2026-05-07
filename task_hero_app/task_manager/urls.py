@@ -5,7 +5,8 @@ from . import views
 app_name = 'task_manager'
 
 urlpatterns = [
-    path("", views.task_list, name="task_list"),
+    path("", views.home, name="home"),
+    path("dashboard", views.task_list, name="task_list"),
     path("task/new/", views.task_create, name="task_create"),
     path("task/<int:pk>/", views.task_detail, name="task_detail"),
     path("task/<int:pk>/edit/", views.task_update, name="task_update"),

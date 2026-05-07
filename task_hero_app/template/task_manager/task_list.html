@@ -68,7 +68,7 @@
                 <span class="priority-badge priority-{{ task.priority }}">{{ task.get_priority_display }}</span>
             </div>
 
-            <h5><a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a></h5>
+            <h5><a href="{% url 'task_manager:task_detail' task.pk %}">{{ task.title }}</a></h5>
             <p>Due: {{ task.due_date }}</p>
 
             <div class="task-actions">
